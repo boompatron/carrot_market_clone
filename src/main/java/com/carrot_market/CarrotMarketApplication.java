@@ -1,4 +1,4 @@
-package com.carrot_market.carrot_market;
+package com.carrot_market;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
