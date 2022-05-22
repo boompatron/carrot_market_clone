@@ -20,7 +20,7 @@ public class ThymeleafExController {
         itemDto.setRegTime(LocalDateTime.now());
 
         model.addAttribute("itemDto", itemDto);
-        return "thymeleafEx";
+        return "thymeleafEx/thymeleafEx";
     }
 
     @GetMapping(value = "/ex03")
@@ -36,7 +36,7 @@ public class ThymeleafExController {
             itemDtoList.add(itemDto);
         }
         model.addAttribute("itemDtoList", itemDtoList);
-        return "thymeleafEx03";
+        return "thymeleafEx/thymeleafEx03";
     }
 
     @GetMapping(value = "/ex04")
@@ -52,6 +52,11 @@ public class ThymeleafExController {
             itemDtoList.add(itemDto);
         }
         model.addAttribute("itemDtoList", itemDtoList);
-        return "thymeleafEx04";
+        return "thymeleafEx/thymeleafEx04";
+    }
+
+    @GetMapping(value = "/ex05")
+    public String thymeleafExample05(Model model){
+        return "thymeleafEx/thymeleafEx05";
     }
 }
