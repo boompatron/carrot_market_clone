@@ -49,4 +49,14 @@ public class MemberControllerTest {
         mockMvc.perform(formLogin().userParameter("email").loginProcessingUrl("/members/login")
                 .user(email).password(password)).andExpect(SecurityMockMvcResultMatchers.authenticated());
     }
+
+    @Test
+    @DisplayName("Login Fail Test")
+    public void loginFailTest() throws Exception{
+        String email = "test@email.com";
+        String password = "1234";
+        this.createMember(email, password);
+        mockMvc.perform(formLogin().userParameter("email").loginProcessingUrl("/members/login")
+                .user(email).password("12345")).andExpect(SecurityMockMvcResultMatchers.unauthenticated());
+    }
 }
