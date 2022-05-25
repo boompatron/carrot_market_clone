@@ -4,13 +4,21 @@ import com.carrot_market.dto.ItemDto;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 @Controller
+@RequestMapping(value = "/thymeleaf")
 public class ThymeleafExController {
+    @GetMapping(value = "/ex01")
+    public String thymeleafExample01(Model model){
+        model.addAttribute("data", "hello");
+        return "thymeleafEx/thymeleafEx01";
+    }
+
     @GetMapping(value = "/ex02")
     public String thymeleafExample02(Model model){
         ItemDto itemDto = new ItemDto();
@@ -20,7 +28,7 @@ public class ThymeleafExController {
         itemDto.setRegTime(LocalDateTime.now());
 
         model.addAttribute("itemDto", itemDto);
-        return "thymeleafEx/thymeleafEx";
+        return "thymeleafEx/thymeleafEx02";
     }
 
     @GetMapping(value = "/ex03")
@@ -65,5 +73,10 @@ public class ThymeleafExController {
         model.addAttribute("param1", param1);
         model.addAttribute("param2", param2);
         return "thymeleafEx/thymeleafEx06";
+    }
+
+    @GetMapping(value = "/ex07")
+    public String thymeleafExample07(){
+        return "thymeleafEx/thymeleafEx07";
     }
 }
