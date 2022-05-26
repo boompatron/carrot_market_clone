@@ -28,4 +28,13 @@ public class ItemControllerTest {
                 .andDo(print())
                 .andExpect(status().isOk());
     }
+
+    @Test
+    @DisplayName("item register page role=user auth test")
+    @WithMockUser(username = "user", roles = "USER")
+    public void itemFormNotAdminTest() throws Exception{
+        mockMvc.perform(MockMvcRequestBuilders.get("/admin/item/new"))
+                .andDo(print())
+                .andExpect(status().isForbidden());
+    }
 }
