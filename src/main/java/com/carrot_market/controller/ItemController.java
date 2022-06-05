@@ -56,4 +56,24 @@ public class ItemController {
         }
         return "item/itemForm";
     }
+
+    @PostMapping(value = "/admin/item/{itemID}")
+    public String itemUpdate(@Valid ItemFormDto itemFormDto, BindingResult bindingResult,
+                             @RequestParam("itemImgFile") List<MultipartFile> itemImgFileList, Model model){
+        if(bindingResult.hasErrors()){
+            return "item/itemForm";
+        }
+        if(itemImgFileList.get(0).isEmpty() && itemFormDto.getId() == null){
+            model.addAttribute("errorMessage", "first item is necessary");
+            return "item/itemForm";
+        }
+
+        try{
+            itemService.updateItem(itemFormDto, itemImgFileList);
+        }catch (Exception e){
+            model.addAttribute("errorMessage", "error occured during editing item");
+            return "item/itemForm";
+        }
+        return "redirect:/";
+    }
 }
