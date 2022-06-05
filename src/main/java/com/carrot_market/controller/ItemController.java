@@ -19,8 +19,9 @@ import java.util.List;
 public class ItemController {
     private final ItemService itemService;
     @GetMapping("/admin/item/new")
-    public String itemForm(){
-        return "/item/itemForm";
+    public String itemForm(Model model){
+        model.addAttribute("itemFormDto", new ItemFormDto());
+        return "item/itemForm";
     }
     @PostMapping(value = "/admin/item/new")
     public String itemNew(@Valid ItemFormDto itemFormDto, BindingResult bindingResult, Model model,
@@ -35,7 +36,7 @@ public class ItemController {
         try{
             itemService.saveItem(itemFormDto, itemImgFileList);
         }catch (Exception e){
-            model.addAttribute("errorMessage", "error occured while registring item");
+            model.addAttribute("errorMessage", "error occurred while registring item");
             return "item/itemForm";
         }
         return "redirect:/";

@@ -51,12 +51,12 @@ public class MemberController {
 
     @GetMapping(value = "/login")
     public String loginMember(){
-        return "member/memberLoginForm";
+        return "/member/memberLoginForm";
     }
 
-    @GetMapping(value = "login/error")
+    @GetMapping(value = "/login/error")
     public String loginError(Model model){
         model.addAttribute("loginErrorMsg", "Check your ID or Password");
-        return "member/memberLoginForm";
+        return "/member/memberLoginForm";
     }
 }
