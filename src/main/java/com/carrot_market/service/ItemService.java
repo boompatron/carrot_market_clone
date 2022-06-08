@@ -3,6 +3,7 @@ package com.carrot_market.service;
 import com.carrot_market.dto.ItemFormDto;
 import com.carrot_market.dto.ItemImgDto;
 import com.carrot_market.dto.ItemSearchDto;
+import com.carrot_market.dto.MainItemDto;
 import com.carrot_market.entity.Item;
 import com.carrot_market.entity.ItemImg;
 import com.carrot_market.repository.ItemImgRepository;
@@ -76,5 +77,10 @@ public class ItemService {
     @Transactional(readOnly = true)
     public Page<Item> getAdminItemPage(ItemSearchDto itemSearchDto, Pageable pageable){
         return itemRepository.getAdminItemPage(itemSearchDto, pageable);
+    }
+
+    @Transactional(readOnly = true)
+    public Page<MainItemDto> getMainItemPage(ItemSearchDto itemSearchDto, Pageable pageable){
+        return itemRepository.getMainItemPage(itemSearchDto, pageable);
     }
 }
