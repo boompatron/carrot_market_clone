@@ -11,7 +11,9 @@ import java.util.List;
 
 // <Entity type class, Primary Key type>
 // To use QueryDel extend interface QdPE
-public interface ItemRepository extends JpaRepository<Item, Long>, QuerydslPredicateExecutor<Item> {
+public interface ItemRepository extends JpaRepository<Item, Long>, QuerydslPredicateExecutor<Item> ,
+    ItemRepositoryCustom
+{
     // find + (Entity name) + By + (Variable name)
     // List<Item> findByItemNm(String itemNm);
     List<Item> findByItemNmOrItemDetail(String itemNm, String itemDetail);
